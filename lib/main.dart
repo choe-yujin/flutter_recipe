@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe/presentation/components/big_button.dart';
+import 'package:flutter_recipe/presentation/components/medium_button.dart';
 import 'package:flutter_recipe/ui/text_styles.dart';
 
 void main() {
@@ -61,6 +62,15 @@ class MyHomePage extends StatelessWidget {
               },
             ),
           ),
+          Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: MediumButton(
+                'Medium Button',
+                onPressed: () {
+                  print('MediumButton');
+                },
+              ),
+          )
         ],
       ),
     );
