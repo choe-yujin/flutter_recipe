@@ -7,6 +7,7 @@ import 'package:flutter_recipe/presentation/components/rating_button.dart';
 import 'package:flutter_recipe/presentation/components/rating_dialog.dart';
 import 'package:flutter_recipe/presentation/components/small_button.dart';
 import 'package:flutter_recipe/presentation/components/tabs.dart';
+import 'package:flutter_recipe/presentation/sign_in/sign_in_screen.dart';
 import 'package:flutter_recipe/ui/text_styles.dart';
 
 void main() {
@@ -16,31 +17,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const SignInScreen(),
     );
   }
 }
@@ -69,7 +54,7 @@ class MyHomePage extends StatelessWidget {
                     score: 3,
                     actionName: 'Send',
                     onChange: (score) {
-                      print(score);
+                      //print(score);
                     },
                   );
                 },
@@ -84,7 +69,7 @@ class MyHomePage extends StatelessWidget {
             ],
             selectedIndex: 0,
             onChange: (int index) {
-              print('Tabs : $index');
+              //print('Tabs : $index');
             },
           ),
           const RatingButton('text'),
@@ -96,7 +81,7 @@ class MyHomePage extends StatelessWidget {
             child: BigButton(
               'Big Button',
               onPressed: () {
-                print('BigButton');
+                //print('BigButton');
               },
             ),
           ),
@@ -105,7 +90,7 @@ class MyHomePage extends StatelessWidget {
             child: MediumButton(
               'Medium',
               onPressed: () {
-                print('Medium Button');
+                //print('Medium Button');
               },
             ),
           ),
@@ -114,7 +99,7 @@ class MyHomePage extends StatelessWidget {
             child: SmallButton(
               'Small',
               onPressed: () {
-                print('Small Button');
+                //print('Small Button');
               },
             ),
           ),
