@@ -5,11 +5,15 @@ import 'package:flutter_recipe/ui/text_styles.dart';
 class BigButton extends StatefulWidget {
   final String text;
   final void Function() onPressed;
+  final Color color;
+  final TextStyle textStyle;
 
   const BigButton(
       this.text, {
         super.key,
         required this.onPressed,
+        this.color = ColorStyles.primary100,
+        this.textStyle = TextStyles.normalTextBold,
       });
 
   @override
