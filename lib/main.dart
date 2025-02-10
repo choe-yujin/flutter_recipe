@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_recipe/data/repository/mock_bookmark_repository_impl.dart';
+import 'package:flutter_recipe/data/repository/mock_recipe_repository_impl.dart';
+import 'package:flutter_recipe/domain/model/recipe.dart';
+import 'package:flutter_recipe/domain/use_case/get_saved_recipes_use_case.dart';
 import 'package:flutter_recipe/presentation/components/big_button.dart';
 import 'package:flutter_recipe/presentation/components/filter_button.dart';
 import 'package:flutter_recipe/presentation/components/input_field.dart';
@@ -7,7 +11,7 @@ import 'package:flutter_recipe/presentation/components/rating_button.dart';
 import 'package:flutter_recipe/presentation/components/rating_dialog.dart';
 import 'package:flutter_recipe/presentation/components/small_button.dart';
 import 'package:flutter_recipe/presentation/components/tabs.dart';
-import 'package:flutter_recipe/presentation/sign_in/sign_in_screen.dart';
+import 'package:flutter_recipe/presentation/saved_recipes/saved_recipes_screen.dart';
 import 'package:flutter_recipe/ui/text_styles.dart';
 
 void main() {
@@ -21,11 +25,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      theme: ThemeData(
+        colorScheme: const ColorScheme.light(),
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      home: const SignInScreen(),
+      home: FutureBuilder<List<Recipe>>(
+          future: GetSavedRecipesUseCase(
+            recipeRepository: MockRecipeRepositoryImpl(),
+            bookmarkRepository: MockBookmarkRepositoryImpl(),
+          ).execute(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            final recipes = snapshot.data!;
+
+            return SavedRecipesScreen(recipes: recipes);
+          }),
     );
   }
 }
