@@ -3,7 +3,10 @@ import 'package:flutter_recipe/presentation/components/big_button.dart';
 import 'package:flutter_recipe/presentation/components/filter_button.dart';
 import 'package:flutter_recipe/presentation/components/input_field.dart';
 import 'package:flutter_recipe/presentation/components/medium_button.dart';
+import 'package:flutter_recipe/presentation/components/rating_button.dart';
+import 'package:flutter_recipe/presentation/components/rating_dialog.dart';
 import 'package:flutter_recipe/presentation/components/small_button.dart';
+import 'package:flutter_recipe/presentation/components/tabs.dart';
 import 'package:flutter_recipe/ui/text_styles.dart';
 
 void main() {
@@ -56,6 +59,36 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          ElevatedButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return RatingDialog(
+                    title: 'Rate recipe',
+                    score: 3,
+                    actionName: 'Send',
+                    onChange: (score) {
+                      print(score);
+                    },
+                  );
+                },
+              );
+            },
+            child: const Text('RatingDialog'),
+          ),
+          Tabs(
+            labels: const [
+              'label 1',
+              'label 2',
+            ],
+            selectedIndex: 0,
+            onChange: (int index) {
+              print('Tabs : $index');
+            },
+          ),
+          const RatingButton('text'),
+          const RatingButton('text', isSelected: true),
           const FilterButton('text'),
           const FilterButton('text', isSelected: true),
           Padding(
@@ -70,9 +103,9 @@ class MyHomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: MediumButton(
-              'Medium Button',
+              'Medium',
               onPressed: () {
-                print('MediumButton');
+                print('Medium Button');
               },
             ),
           ),
