@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_recipe/core/routing/router.dart';
 import 'package:flutter_recipe/presentation/components/big_button.dart';
 import 'package:flutter_recipe/presentation/components/filter_button.dart';
 import 'package:flutter_recipe/presentation/components/input_field.dart';
@@ -20,14 +21,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: const ColorScheme.light(),
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      home: SplashScreen(onTapStartCooking: () {  },),
     );
   }
 }
