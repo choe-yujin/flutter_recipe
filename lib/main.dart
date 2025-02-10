@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe/presentation/components/big_button.dart';
+import 'package:flutter_recipe/presentation/components/filter_button.dart';
 import 'package:flutter_recipe/presentation/components/input_field.dart';
 import 'package:flutter_recipe/presentation/components/medium_button.dart';
 import 'package:flutter_recipe/presentation/components/small_button.dart';
@@ -55,6 +56,8 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          const FilterButton('text'),
+          const FilterButton('text', isSelected: true),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: BigButton(
