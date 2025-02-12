@@ -1,26 +1,24 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_recipe/core/routing/route_paths.dart';
-import 'package:flutter_recipe/data/repository/mock_bookmark_repository_impl.dart';
-import 'package:flutter_recipe/data/repository/mock_recipe_repository_impl.dart';
-import 'package:flutter_recipe/domain/model/recipe.dart';
-import 'package:flutter_recipe/domain/use_case/get_saved_recipes_use_case.dart';
+import 'package:flutter_recipe/main.dart';
+import 'package:flutter_recipe/presentation/home/home_screen.dart';
 import 'package:flutter_recipe/presentation/main/main_screen.dart';
 import 'package:flutter_recipe/presentation/notifications/notifications_screen.dart';
 import 'package:flutter_recipe/presentation/profile/profile_screen.dart';
 import 'package:flutter_recipe/presentation/saved_recipes/screen/saved_recipes_root.dart';
-import 'package:flutter_recipe/presentation/saved_recipes/screen/saved_recipes_screen.dart';
 import 'package:flutter_recipe/presentation/sign_in/sign_in_screen.dart';
 import 'package:flutter_recipe/presentation/sign_up/sign_up_screen.dart';
 import 'package:flutter_recipe/presentation/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../presentation/home/home_screen.dart';
-
-
 // GoRouter configuration
 final router = GoRouter(
+  //initialLocation: RoutePaths.test,
   initialLocation: RoutePaths.splash,
   routes: [
+    GoRoute(
+      path: RoutePaths.test,
+      builder: (context, state) => const MyHomePage(),
+    ),
     GoRoute(
       path: RoutePaths.signUp,
       builder: (context, state) => SignUpScreen(
@@ -58,7 +56,7 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: RoutePaths.home,
-              builder: (context, state) => const HomeScreen(),
+              builder: (context, state) => const HomeScreen(name: 'Jega'),
             ),
           ],
         ),
