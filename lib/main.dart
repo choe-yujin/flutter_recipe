@@ -6,6 +6,7 @@ import 'package:flutter_recipe/presentation/components/input_field.dart';
 import 'package:flutter_recipe/presentation/components/medium_button.dart';
 import 'package:flutter_recipe/presentation/components/rating_button.dart';
 import 'package:flutter_recipe/presentation/components/rating_dialog.dart';
+import 'package:flutter_recipe/presentation/components/search_input_field.dart';
 import 'package:flutter_recipe/presentation/components/small_button.dart';
 import 'package:flutter_recipe/presentation/components/tabs.dart';
 import 'package:flutter_recipe/ui/text_styles.dart';
@@ -45,6 +46,7 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          const SearchInputField(placeHolder: 'PlaceHolder'),
           ElevatedButton(
             onPressed: () {
               showDialog(
@@ -55,7 +57,7 @@ class MyHomePage extends StatelessWidget {
                     score: 3,
                     actionName: 'Send',
                     onChange: (score) {
-                      //print(score);
+                      print(score);
                     },
                   );
                 },
