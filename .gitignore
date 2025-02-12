@@ -277,5 +277,6 @@ fabric.properties
 /web
 
 .metadata
+*.freezed.dart
 
 # End of https://www.toptal.com/developers/gitignore/api/flutter,dart,androidstudio,android,visualstudiocode
