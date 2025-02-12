@@ -8,8 +8,6 @@ import 'package:flutter_recipe/presentation/components/rating_button.dart';
 import 'package:flutter_recipe/presentation/components/rating_dialog.dart';
 import 'package:flutter_recipe/presentation/components/small_button.dart';
 import 'package:flutter_recipe/presentation/components/tabs.dart';
-import 'package:flutter_recipe/presentation/sign_up/sign_up_screen.dart';
-import 'package:flutter_recipe/presentation/splash/splash_screen.dart';
 import 'package:flutter_recipe/ui/text_styles.dart';
 
 void main() {
