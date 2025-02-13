@@ -7,10 +7,12 @@ import 'package:flutter_recipe/ui/text_styles.dart';
 
 class SearchScreen extends StatelessWidget {
   final SearchState state;
+  final void Function(String query)? onChanged;
 
   const SearchScreen({
     super.key,
     required this.state,
+    this.onChanged,
   });
 
   @override
@@ -31,8 +33,11 @@ class SearchScreen extends StatelessWidget {
             const SizedBox(height: 17),
             Row(
               children: [
-                const Expanded(
-                  child: SearchInputField(placeHolder: 'Search Recipe'),
+                Expanded(
+                  child: SearchInputField(
+                    placeHolder: 'Search Recipe',
+                    onChanged: onChanged,
+                  ),
                 ),
                 const SizedBox(width: 20),
                 Container(
@@ -58,20 +63,20 @@ class SearchScreen extends StatelessWidget {
             Expanded(
               child: state.isLoading
                   ? const Center(
-                child: CircularProgressIndicator(),
-              )
+                      child: CircularProgressIndicator(),
+                    )
                   : GridView.builder(
-                gridDelegate:
-                const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 15,
-                ),
-                itemCount: state.recipes.length,
-                itemBuilder: (context, index) {
-                  final recipe = state.recipes[index];
-                  return RecipeGridItem(recipe: recipe);
-                },
-              ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 15,
+                      ),
+                      itemCount: state.recipes.length,
+                      itemBuilder: (context, index) {
+                        final recipe = state.recipes[index];
+                        return RecipeGridItem(recipe: recipe);
+                      },
+                    ),
             )
           ],
         ),
