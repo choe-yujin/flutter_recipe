@@ -1,41 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe/presentation/components/recipe_grid_item.dart';
 import 'package:flutter_recipe/presentation/components/search_input_field.dart';
+import 'package:flutter_recipe/presentation/search/search_state.dart';
 import 'package:flutter_recipe/ui/color_styles.dart';
 import 'package:flutter_recipe/ui/text_styles.dart';
-import 'package:flutter_recipe/domain/model/recipe.dart';
 
 class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
+  final SearchState state;
+
+  const SearchScreen({
+    super.key,
+    required this.state,
+  });
 
   @override
   Widget build(BuildContext context) {
-    // 임시 데이터
-    final dummyRecipes = [
-      Recipe(
-        category: "Indian",
-        id: 1,
-        name: "Traditional spare ribs baked",
-        image: "https://cdn.pixabay.com/photo/2017/11/10/15/04/steak-2936531_1280.jpg",
-        chef: "Chef John",
-        time: "20 min",
-        rating: 4.0,
-        ingredients: const [],
-      ),
-      Recipe(
-        category: "Asian",
-        id: 2,
-        name: "Spice roasted chicken",
-        image: "https://cdn.pixabay.com/photo/2018/12/04/16/49/tandoori-3856045_1280.jpg",
-        chef: "Mark Kelvin",
-        time: "20 min",
-        rating: 4.0,
-        ingredients: const [],
-      ),
-    ];
-
-    final isLoading = false; // 임시 로딩 상태
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -77,18 +56,19 @@ class SearchScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: isLoading
+              child: state.isLoading
                   ? const Center(
                 child: CircularProgressIndicator(),
               )
                   : GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate:
+                const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 15,
                 ),
-                itemCount: dummyRecipes.length,
+                itemCount: state.recipes.length,
                 itemBuilder: (context, index) {
-                  final recipe = dummyRecipes[index];
+                  final recipe = state.recipes[index];
                   return RecipeGridItem(recipe: recipe);
                 },
               ),
