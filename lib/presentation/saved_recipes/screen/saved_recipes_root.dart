@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_recipe/data/data_source/recipe_data_source_impl.dart';
 import 'package:flutter_recipe/data/repository/mock_bookmark_repository_impl.dart';
 import 'package:flutter_recipe/data/repository/mock_recipe_repository_impl.dart';
 import 'package:flutter_recipe/domain/use_case/get_saved_recipes_use_case.dart';
@@ -6,7 +7,7 @@ import 'package:flutter_recipe/presentation/saved_recipes/saved_recipes_view_mod
 import 'package:flutter_recipe/presentation/saved_recipes/screen/saved_recipes_screen.dart';
 
 final _getSavedRecipesUseCase = GetSavedRecipesUseCase( // 싱글턴(나중에 DI 통해 분리할거임)
-  recipeRepository: MockRecipeRepositoryImpl(),
+  recipeRepository: MockRecipeRepositoryImpl(recipeDataSource: RecipeDataSourceImpl()),
   bookmarkRepository: MockBookmarkRepositoryImpl(),
 );
 
