@@ -1,12 +1,11 @@
 import 'package:flutter_recipe/core/routing/route_paths.dart';
 import 'package:flutter_recipe/main.dart';
 import 'package:flutter_recipe/presentation/home/screen/home_root.dart';
-import 'package:flutter_recipe/presentation/home/screen/home_screen.dart';
 import 'package:flutter_recipe/presentation/main/main_screen.dart';
 import 'package:flutter_recipe/presentation/notifications/notifications_screen.dart';
 import 'package:flutter_recipe/presentation/profile/profile_screen.dart';
 import 'package:flutter_recipe/presentation/saved_recipes/screen/saved_recipes_root.dart';
-import 'package:flutter_recipe/presentation/search/screen/search_screen.dart';
+import 'package:flutter_recipe/presentation/search/screen/search_root.dart';
 import 'package:flutter_recipe/presentation/sign_in/sign_in_screen.dart';
 import 'package:flutter_recipe/presentation/sign_up/sign_up_screen.dart';
 import 'package:flutter_recipe/presentation/splash/splash_screen.dart';
@@ -41,7 +40,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: RoutePaths.search,
-      builder: (context, state) => const SearchScreen(),
+      builder: (context, state) => const SearchRoot(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {

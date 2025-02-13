@@ -1,27 +1,21 @@
-import 'dart:convert';
 import 'package:flutter_recipe/data/data_source/search_data_source.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchDataSourceImpl implements SearchDataSource {
-  static const String _recentSearchKey = 'recent_searches';
-  final SharedPreferences _prefs;
-
-  SearchDataSourceImpl({
-    required SharedPreferences prefs,
-  }) : _prefs = prefs;
+  // 메모리 상에 저장된 최근 검색 리스트
+  final List<Map<String, dynamic>> _recentSearches = [];
 
   @override
   Future<List<Map<String, dynamic>>> getRecentSearches() async {
-    final jsonString = _prefs.getString(_recentSearchKey);
-    if (jsonString == null) return [];
-
-    final List<dynamic> jsonList = jsonDecode(jsonString);
-    return jsonList.cast<Map<String, dynamic>>();
+    // 최근 검색 결과를 반환
+    return _recentSearches;
   }
 
   @override
   Future<void> saveRecentSearches(List<Map<String, dynamic>> recipes) async {
-    final jsonString = jsonEncode(recipes);
-    await _prefs.setString(_recentSearchKey, jsonString);
+    // 새로운 검색 결과를 저장
+    print('Saving recent searches: ${recipes.length} items');
+    _recentSearches
+      ..clear() // 이전 검색결과를 지우고
+      ..addAll(recipes); // 새로운 검색결과를 추가
   }
 }
