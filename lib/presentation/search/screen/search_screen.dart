@@ -8,11 +8,13 @@ import 'package:flutter_recipe/ui/text_styles.dart';
 class SearchScreen extends StatelessWidget {
   final SearchState state;
   final void Function(String query)? onChanged;
+  final void Function()? onTapFilter;
 
   const SearchScreen({
     super.key,
     required this.state,
     this.onChanged,
+    this.onTapFilter,
   });
 
   @override
@@ -40,43 +42,57 @@ class SearchScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 20),
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorStyles.primary100,
-                  ),
-                  child: const Icon(
-                    Icons.tune,
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: onTapFilter,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: ColorStyles.primary100,
+                    ),
+                    child: const Icon(
+                      Icons.tune,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Recent Search',
-              style: TextStyles.normalTextBold,
+            Row(
+              children: [
+                Text(
+                  state.searchTitle,
+                  style: TextStyles.normalTextBold,
+                ),
+                const Spacer(),
+                Text(
+                  state.resultsCount,
+                  style: TextStyles.smallerTextRegular.copyWith(
+                    color: ColorStyles.gray3,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             Expanded(
               child: state.isLoading
                   ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
+                child: CircularProgressIndicator(),
+              )
                   : GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 15,
-                      ),
-                      itemCount: state.recipes.length,
-                      itemBuilder: (context, index) {
-                        final recipe = state.recipes[index];
-                        return RecipeGridItem(recipe: recipe);
-                      },
-                    ),
+                gridDelegate:
+                const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 15,
+                ),
+                itemCount: state.recipes.length,
+                itemBuilder: (context, index) {
+                  final recipe = state.recipes[index];
+                  return RecipeGridItem(recipe: recipe);
+                },
+              ),
             )
           ],
         ),
