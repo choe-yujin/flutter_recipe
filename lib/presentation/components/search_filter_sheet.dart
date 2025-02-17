@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_recipe/presentation/search/filter_state.dart';
 import 'package:flutter_recipe/presentation/components/filter_buttons.dart';
 import 'package:flutter_recipe/presentation/components/small_button.dart';
-import 'package:flutter_recipe/presentation/filter/filter_state.dart';
 import 'package:flutter_recipe/ui/text_styles.dart';
 
 class SearchFilterSheet extends StatefulWidget {

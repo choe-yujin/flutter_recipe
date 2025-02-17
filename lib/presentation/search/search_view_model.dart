@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_recipe/presentation/search/filter_state.dart';
 import 'package:flutter_recipe/domain/repository/recent_search_recipe_repository.dart';
 import 'package:flutter_recipe/domain/use_case/search_recipes_use_case.dart';
-import 'package:flutter_recipe/presentation/filter/filter_state.dart';
 import 'package:flutter_recipe/presentation/search/search_state.dart';
 
 class SearchViewModel with ChangeNotifier {

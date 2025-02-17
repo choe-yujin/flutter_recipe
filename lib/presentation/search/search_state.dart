@@ -1,5 +1,5 @@
+import 'package:flutter_recipe/presentation/search/filter_state.dart';
 import 'package:flutter_recipe/domain/model/recipe.dart';
-import 'package:flutter_recipe/presentation/filter/filter_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'search_state.freezed.dart';
