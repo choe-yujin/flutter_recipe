@@ -29,17 +29,15 @@ class RecipeGridItem extends StatelessWidget {
           Positioned(
             bottom: 10,
             left: 10,
+            right: 10,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 200,
-                  child: Text(
-                    recipe.name,
-                    maxLines: 2,
-                    style: TextStyles.smallTextBold.copyWith(
-                      color: Colors.white,
-                    ),
+                Text(
+                  recipe.name,
+                  maxLines: 2,
+                  style: TextStyles.smallTextBold.copyWith(
+                    color: Colors.white,
                   ),
                 ),
                 Text(
