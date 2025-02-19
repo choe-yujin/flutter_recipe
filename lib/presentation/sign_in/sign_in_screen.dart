@@ -18,103 +18,105 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 50),
-              const Text(
-                'Hello,',
-                style: TextStyles.headerTextBold,
-              ),
-              const Text(
-                'Welcome Back!',
-                style: TextStyles.largeTextRegular,
-              ),
-              const SizedBox(height: 57),
-              const InputField(
-                label: 'Email',
-                placeHolder: 'Enter Email',
-              ),
-              const SizedBox(height: 30),
-              const InputField(
-                label: 'Enter Password',
-                placeHolder: 'Enter Password',
-              ),
-              const SizedBox(height: 20),
-              Text(
-                'Forgot Password?',
-                style: TextStyles.smallerTextRegular.copyWith(
-                  color: ColorStyles.secondary100,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 50),
+                const Text(
+                  'Hello,',
+                  style: TextStyles.headerTextBold,
                 ),
-              ),
-              const SizedBox(height: 25),
-              BigButton(
-                'Sign In',
-                onPressed: onTapSignIn,
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 50,
-                    height: 1,
-                    color: ColorStyles.gray4,
+                const Text(
+                  'Welcome Back!',
+                  style: TextStyles.largeTextRegular,
+                ),
+                const SizedBox(height: 57),
+                const InputField(
+                  label: 'Email',
+                  placeHolder: 'Enter Email',
+                ),
+                const SizedBox(height: 30),
+                const InputField(
+                  label: 'Enter Password',
+                  placeHolder: 'Enter Password',
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  'Forgot Password?',
+                  style: TextStyles.smallerTextRegular.copyWith(
+                    color: ColorStyles.secondary100,
                   ),
-                  const SizedBox(width: 7),
-                  Text(
-                    'Or Sign in With',
-                    style: TextStyles.smallerTextBold.copyWith(
+                ),
+                const SizedBox(height: 25),
+                BigButton(
+                  'Sign In',
+                  onPressed: onTapSignIn,
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 1,
                       color: ColorStyles.gray4,
                     ),
-                  ),
-                  const SizedBox(width: 7),
-                  Container(
-                    width: 50,
-                    height: 1,
-                    color: ColorStyles.gray4,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/image/google_button.png',
-                    width: 60,
-                    height: 60,
-                  ),
-                  const SizedBox(width: 15),
-                  Image.asset(
-                    'assets/image/facebook_button.png',
-                    width: 60,
-                    height: 60,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 55),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Don’t have an account? ',
-                    style: TextStyles.smallerTextBold,
-                  ),
-                  GestureDetector(
-                    onTap: onTapSignUp,
-                    child: Text(
-                      'Sign up',
+                    const SizedBox(width: 7),
+                    Text(
+                      'Or Sign in With',
                       style: TextStyles.smallerTextBold.copyWith(
-                        color: ColorStyles.secondary100,
+                        color: ColorStyles.gray4,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    const SizedBox(width: 7),
+                    Container(
+                      width: 50,
+                      height: 1,
+                      color: ColorStyles.gray4,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/image/google_button.png',
+                      width: 60,
+                      height: 60,
+                    ),
+                    const SizedBox(width: 15),
+                    Image.asset(
+                      'assets/image/facebook_button.png',
+                      width: 60,
+                      height: 60,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 55),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Don’t have an account? ',
+                      style: TextStyles.smallerTextBold,
+                    ),
+                    GestureDetector(
+                      onTap: onTapSignUp,
+                      child: Text(
+                        'Sign up',
+                        style: TextStyles.smallerTextBold.copyWith(
+                          color: ColorStyles.secondary100,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

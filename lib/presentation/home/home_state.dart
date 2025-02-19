@@ -8,5 +8,6 @@ class HomeState with _$HomeState {
   const factory HomeState({
     @Default([]) List<String> categories,
     @Default('All') String selectedCategory,
+    @Default([]) List<Recipe> dishes,
   }) = _HomeState;
 }
